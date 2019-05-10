@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CF周边商城</title>
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <header></header>
+  <div class="banner">
+    <a href="javascript:;"><img src="img/banner.png"></a>
+</div>
+
+<div class="mainContainer">
+    <div class="content">
+        <div class="module">
+            <div class="title">
+                <h1>主题产品</h1>
+                <div class="more">
+                    <a href="javascript:;">更多</a>
+                    <i class="iconfont icon-wodeyishupin_"></i>
+                </div>
+            </div>
+            <div class="top">
+                <a href="javascript:;"><img src="img/kongyou.jpg"></a>
+            </div>
+
+            <!-- render部分 -->
+            <div class="bottom"></div>
+            <script type="text/html" id="moduleRender">
+                <ul>
+                    {{each list item}}
+                        <li data-id="{{item.id}}">
+                            <img src="{{item.images}}">
+                            <p>{{item.name}}</p>
+                            <p>￥{{item.price}}</p>
+                        </li>
+                    {{/each}}
+                </ul>
+            </script>
+        </div>
+    </div>
+</div>
+  <footer></footer>
+  <script src="/libs/requirejs/require.min.js" data-main="/js/index"></script>
+</body>
+</html>

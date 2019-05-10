@@ -1,0 +1,114 @@
+header{
+    min-width: 1280px;
+    background-color:#0e0e0f;
+}
+header .header-container{
+    width: 1280px;
+
+    margin: 0 auto;
+    height: 158px; 
+}
+header .header-top{
+    height: 99px;
+    border-bottom: 1px solid #222222;
+}
+header .header-top .logo{
+    float: left;
+    margin-left:68px;
+    padding-top:15px;
+}
+header .header-top .search{
+    float: left;
+    margin-top:37px;
+    margin-left:289px;
+    background: #242424;
+    width: 242px;
+    height: 43px;
+    border-radius: 35px;
+    padding-left: 10px;
+}
+header .header-top .search i{
+    font-size: 20px;
+    color:#aaa;
+    line-height: 43px;
+    cursor: pointer;
+}
+header .header-top .search input{
+    width: 212px;
+    height: 43px;
+    border: none;
+    background:none;
+    outline: none;
+    font-size:14px;
+    color:#fff;
+    padding-left: 3px;
+}
+header .header-top .search input::placeholder{
+    color:#aaa;
+}
+header .header-top .un-loginbox{
+    float: left;
+    margin-left: 63px;
+    margin-top: 50px;
+}
+header .header-top .un-loginbox a,i{
+    color:#fff;
+}
+header .header-top .un-loginbox a{
+    margin-left: 3px;
+}
+#loginbox{
+    display: none;
+}
+#loginbox span{
+    cursor: pointer;
+    color:#fff;
+}
+
+
+
+header .header-top .cart{
+    float:right;
+    margin-top: 50px;
+}
+header .header-top .cart i,a{
+    color:#fff;
+}
+header .header-top .cart a{
+    margin-left: 3px;
+}
+
+header .header-bottom{
+    height: 59px;
+}
+header .header-bottom .nav{
+    float: left;
+}
+header .header-bottom .nav ul{
+    display: flex;
+    width: 650px;
+}
+header .header-bottom .nav ul li{
+    height: 100%;
+    width: 20%;
+}
+header .header-bottom .nav ul li:hover a{
+    border-bottom: 5px solid yellow;
+    color: #fff;
+}
+header .header-bottom .nav ul li a{
+    width: 100%;
+    text-align: center;
+    line-height: 59px;
+    display: inline-block;
+    color:#84a6a6;
+    height: 59px;
+}
+header .header-bottom .allClass{
+    float:right;
+    height: 59px;
+    line-height: 59px;
+}
+header .header-bottom .allClass a{
+    margin-right: 5px;
+}
