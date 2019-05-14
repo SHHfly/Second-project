@@ -2,17 +2,18 @@
 @import "module/base.scss";
 @import "module/footer.scss";
 @import "../libs/font/iconfont.css";
-.banner{
+@import "../libs/swiper/css/swiper.min.css";
+.swiper-container{
     min-height: 350px;
 
     min-width: 1280px;
 }
-.banner a{
-    display:block;
+.swiper-container a{
+
     height:100%;
     width: 100%;
 }
-.banner a img{
+.swiper-container a img{
     height: 100%;
     width: 100%;
 }

@@ -7,7 +7,8 @@ require.config({
       "template" : "libs/art-template/template-web",
       "url" : "js/module/url",
       "cookie":"libs/jquery-plugins/jquery.cookie",
-      "zoom" : "libs/jquery-plugins/jquery.elevateZoom-3.0.8.min"
+      "zoom" : "libs/jquery-plugins/jquery.elevateZoom-3.0.8.min",
+      "swiper" : "libs/swiper/js/swiper.min"
     },
     shim:{
       "cookie":{
