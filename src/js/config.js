@@ -8,13 +8,17 @@ require.config({
       "url" : "js/module/url",
       "cookie":"libs/jquery-plugins/jquery.cookie",
       "zoom" : "libs/jquery-plugins/jquery.elevateZoom-3.0.8.min",
-      "swiper" : "libs/swiper/js/swiper.min"
+      "swiper" : "libs/swiper/js/swiper.min",
+      "fly" : "libs/jquery-plugins/jquery.fly.min"
     },
     shim:{
       "cookie":{
         deps:['jquery']
       },
       "zoom":{
+        deps:['jquery']
+      },
+      "fly":{
         deps:['jquery']
       }
     }

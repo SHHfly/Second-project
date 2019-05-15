@@ -77,7 +77,15 @@ header .header-top .cart i,a{
 header .header-top .cart a{
     margin-left: 3px;
 }
-
+#calcCart{
+    color: #fff;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    border-radius: 13px;
+    text-align: center;
+    background-color: red;
+}
 header .header-bottom{
     height: 59px;
 }

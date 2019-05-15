@@ -7,6 +7,7 @@ define(["jquery","cookie"],()=>{
             this.init().then(()=>{
                 this.search();
                 this.isLogin();
+                this.calcCart();
             });
             //this.searchInput = $(".searchInput");
         }
@@ -50,6 +51,19 @@ define(["jquery","cookie"],()=>{
                 
             })
         }
+        calcCart(){
+            
+            let cart = localStorage.getItem('cart');
+            let num = 0;
+            if(cart){
+                cart = JSON.parse(cart);
+                num = cart.reduce((n,shop)=>{
+                    return n + shop.num; 
+                },0);
+            }
+            $('#calcCart').html(num);
+            
+        }
     }
-    new Header();
+    return new Header();
 })
