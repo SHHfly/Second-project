@@ -7,14 +7,11 @@ require(['config'],()=>{
                 this.checkChange();
                 this.edit(); 
                 this.allCheck(); 
-                
             }
             render(){
                 let data = localStorage.getItem('cart');
                 if(data){
                     data = JSON.parse(data);
-                    //console.log(data.length);
-                    //console.log(data);
                     this.container.html(template("cart-item",{data}));
                     $('.checkboxBtn').each(function(){
                         let str = $(this).parents(".cart-item").attr('check-id');
@@ -26,7 +23,6 @@ require(['config'],()=>{
                 }
                 header.calcCart();
                 this.caclTotal();
-                
             }
             checkChange(){
                 let _this = this;
@@ -35,16 +31,13 @@ require(['config'],()=>{
                     let cart = localStorage.getItem('cart');
                     cart = JSON.parse(cart);
                     let id = $(this).parents('.cart-item').attr('data-id');
-                    
                     let index = -1;
                     cart.some((shop,i)=>{
                         index = i ;
                         return shop.id == id;
                     });
-                    //console.log(index);
                     cart[index].checked = !cart[index].checked;
                     localStorage.setItem('cart',JSON.stringify(cart));
-                    
                 })
             }
             caclTotal(){
@@ -57,7 +50,6 @@ require(['config'],()=>{
                         allPrice += ($(this).find(".xiaoji").html()-0);
                         allNum += ($(this).find(".number").val()-0);
                         _this.count++;
-                        
                     }
                 })
                 $('#allNum').html(allNum);
@@ -72,8 +64,7 @@ require(['config'],()=>{
                     }
                 }else{
                     $('.allcheckBtn').prop('checked',false);
-                }
-                
+                } 
             }
             edit(){
                 let _this = this;
@@ -92,9 +83,9 @@ require(['config'],()=>{
                     })
                     data[index].num = num;
                     localStorage.setItem('cart',JSON.stringify(data));
-                    //_this.render(JSON.stringify(data));
                     xiaojiSpan.html((priceSpan.html()*num).toFixed(2));
                     _this.caclTotal();
+                    header.calcCart();
                 })
                 this.container.on("click",".Jan",function(){
                     let data = JSON.parse(localStorage.getItem('cart'));
@@ -112,16 +103,14 @@ require(['config'],()=>{
                     })
                     data[index].num = num;
                     localStorage.setItem('cart',JSON.stringify(data));
-                    //_this.render(JSON.stringify(data));
                     xiaojiSpan.html((priceSpan.html()*num).toFixed(2));
                     _this.caclTotal();
+                    header.calcCart();
                     
                 })
                 this.container.on("click",".delShop",function(){
-                    
                     if(confirm('确定不买了吗？')){
-                        let data = JSON.parse(localStorage.getItem('cart'));
-                    
+                        let data = JSON.parse(localStorage.getItem('cart'));               
                         let id = $(this).parents('.cart-item').attr('data-id');
                         let index = -1;
                         data.some((shop,i)=>{
@@ -132,13 +121,11 @@ require(['config'],()=>{
                         localStorage.setItem('cart',JSON.stringify(data));
                         $(this).parents('.cart-item').remove();
                         _this.caclTotal();
-                       // console.log(data);
-                        //console.log(data.length);
                         if(data.length === 0){
-                           // console.log('纱门窗及');
                             localStorage.clear();
                             _this.render();   
                         }
+                        header.calcCart();
                     }   
                 })
             }
