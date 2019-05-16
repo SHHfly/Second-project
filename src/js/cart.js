@@ -6,7 +6,7 @@ require(['config'],()=>{
                 this.render();
                 this.checkChange();
                 this.edit(); 
-                
+                this.allCheck(); 
                 
             }
             render(){
@@ -62,7 +62,18 @@ require(['config'],()=>{
                 })
                 $('#allNum').html(allNum);
                 $('#allPrice').html((allPrice).toFixed(2));
-                this.allCheck(); 
+                let cart = localStorage.getItem('cart');
+                if(cart){
+                    cart = JSON.parse(cart);
+                    if(this.count == cart.length){
+                        $('.allcheckBtn').prop('checked',true);
+                    }else{
+                        $('.allcheckBtn').prop('checked',false);
+                    }
+                }else{
+                    $('.allcheckBtn').prop('checked',false);
+                }
+                
             }
             edit(){
                 let _this = this;
@@ -132,18 +143,7 @@ require(['config'],()=>{
                 })
             }
             allCheck(){
-                let cart = localStorage.getItem('cart');
-                let _this = this;
-                if(cart){
-                    cart = JSON.parse(cart);
-                    if(this.count == cart.length){
-                        $('.allcheckBtn').prop('checked',true);
-                    }else{
-                        $('.allcheckBtn').prop('checked',false);
-                    }
-                }else{
-                    $('.allcheckBtn').prop('checked',false);
-                }
+                let _this = this;              
                 $('.allcheckBtn').on('change',function(){
                     let allChecked = $('.allcheckBtn').prop('checked');
                     let checkedBtns = $('.checkboxBtn');
