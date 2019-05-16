@@ -5,7 +5,9 @@ require(['config'],()=>{
                 this.container = $(".cart-list");
                 this.render();
                 this.checkChange();
-                this.edit();  
+                this.edit(); 
+                
+                
             }
             render(){
                 let data = localStorage.getItem('cart');
@@ -24,6 +26,7 @@ require(['config'],()=>{
                 }
                 header.calcCart();
                 this.caclTotal();
+                
             }
             checkChange(){
                 let _this = this;
@@ -47,14 +50,19 @@ require(['config'],()=>{
             caclTotal(){
                 let allNum = 0;
                 let allPrice = 0.00;
+                let _this = this;
+                this.count = 0;
                 $(".cart-item").each(function(){
                     if($(this).find(".checkboxBtn").prop('checked')){
                         allPrice += ($(this).find(".xiaoji").html()-0);
                         allNum += ($(this).find(".number").val()-0);
+                        _this.count++;
+                        
                     }
                 })
                 $('#allNum').html(allNum);
                 $('#allPrice').html((allPrice).toFixed(2));
+                this.allCheck(); 
             }
             edit(){
                 let _this = this;
@@ -124,7 +132,34 @@ require(['config'],()=>{
                 })
             }
             allCheck(){
-                console.log($('.allcheckBtn'));
+                let cart = localStorage.getItem('cart');
+                let _this = this;
+                if(cart){
+                    cart = JSON.parse(cart);
+                    if(this.count == cart.length){
+                        $('.allcheckBtn').prop('checked',true);
+                    }else{
+                        $('.allcheckBtn').prop('checked',false);
+                    }
+                }else{
+                    $('.allcheckBtn').prop('checked',false);
+                }
+                $('.allcheckBtn').on('change',function(){
+                    let allChecked = $('.allcheckBtn').prop('checked');
+                    let checkedBtns = $('.checkboxBtn');
+                    checkedBtns.each(function(){
+                        $(this).prop('checked',allChecked);        
+                    })
+                    let cart = localStorage.getItem('cart');
+                    if(cart){
+                        cart = JSON.parse(cart);
+                        cart.forEach(data=>{
+                            data.checked = allChecked;
+                        })
+                    }
+                    localStorage.setItem('cart',JSON.stringify(cart));
+                    _this.caclTotal();
+                })
             }
         }
         new Cart();
